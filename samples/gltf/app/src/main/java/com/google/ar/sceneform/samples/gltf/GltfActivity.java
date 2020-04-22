@@ -54,7 +54,7 @@ public class GltfActivity extends AppCompatActivity {
   private static final String TAG = GltfActivity.class.getSimpleName();
   private static final double MIN_OPENGL_VERSION = 3.0;
 
-  private ArFragment arFragment;
+  private MarkerBasedARFragment arFragment;
   private Renderable renderable;
 
   private static class AnimationInstance {
@@ -97,7 +97,7 @@ public class GltfActivity extends AppCompatActivity {
     }
 
     setContentView(R.layout.activity_ux);
-    arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+    arFragment = (MarkerBasedARFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
     WeakReference<GltfActivity> weakActivity = new WeakReference<>(this);
 
