@@ -102,17 +102,22 @@ public class GltfActivity extends AppCompatActivity {
     WeakReference<GltfActivity> weakActivity = new WeakReference<>(this);
 
     ModelRenderable.builder()
-        .setSource(
-            this,
-            Uri.parse(
-                "https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
-        .setIsFilamentGltf(true)
+        //.setSource(
+        //    this,
+        //    Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
+        //    .setSource(this,R.raw.bayern_map_low)
+            .setSource(this,R.raw.avocado)
+        .setIsFilamentGltf(true) //if false returns null
         .build()
         .thenAccept(
             modelRenderable -> {
               GltfActivity activity = weakActivity.get();
               if (activity != null) {
                 activity.renderable = modelRenderable;
+                System.out.println("Submesh count"+modelRenderable.getSubmeshCount());
+                for(int i=0;i<modelRenderable.getSubmeshCount();i++){
+                    System.out.println("XXY"+modelRenderable.getSubmeshName(i)+" "+modelRenderable.getMaterial(i));
+                }
               }
             })
         .exceptionally(
